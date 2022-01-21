@@ -1,0 +1,7 @@
+<form method="post" action="upload/" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*">
+    <button>Submit</button>
+</form>
+{{range $filename := .}}
+<a href="images/{{$filename}}">{{$filename}}</a><br>
+{{end}}
