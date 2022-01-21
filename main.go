@@ -34,7 +34,7 @@ func writeImage(r *http.Request) error {
 	}
 	hash := sha256.Sum256(b)
 	filename := filepath.Join("images", hex.EncodeToString(hash[:])+"."+ext)
-	return os.WriteFile(filename, b, 0666)
+	return os.WriteFile(filename, b, 0644)
 }
 
 func writeIndex(rw http.ResponseWriter) error {
