@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"errors"
+	"flag"
 	"io"
 	"log"
 	"net/http"
@@ -88,5 +89,7 @@ func main() {
 	http.HandleFunc("/", handleIndex)
 	http.HandleFunc("/upload/", handleUpload)
 	http.HandleFunc("/images/", handleImage)
-	http.ListenAndServe(":8081", nil)
+	port := flag.String("port", "8080", "Specify alternate port")
+	flag.Parse()
+	http.ListenAndServe(":"+*port, nil)
 }
