@@ -10,7 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	filepath "path"
+	"path/filepath"
 	"strings"
 	"text/template"
 )
