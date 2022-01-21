@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"flag"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -91,5 +92,8 @@ func main() {
 	http.HandleFunc("/images/", handleImage)
 	port := flag.String("port", "8080", "Specify alternate port")
 	flag.Parse()
-	http.ListenAndServe(":"+*port, nil)
+	fmt.Println("listening to", *port)
+	if err := http.ListenAndServe(":"+*port, nil); err != http.ErrServerClosed {
+		panic(err)
+	}
 }
